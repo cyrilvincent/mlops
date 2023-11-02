@@ -26,7 +26,7 @@ model.fit(xtrain, ytrain)
 score = model.score(xtest, ytest)
 print(score)
 ypred = model.predict(xtest)
-with open(f"data/cancer/rf_{int(score*100)}.pickle", "wb") as f:
+with open(f"data/cancer/rf-{int(score*100)}.pickle", "wb") as f:
     pickle.dump((scaler, model), f)
 
 print(model.feature_importances_)
