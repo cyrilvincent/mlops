@@ -1,1 +1,0 @@
-from restservice import app as application
