@@ -48,7 +48,10 @@ model.summary()
 
 hist = model.fit(x=x_train,y=y_train, epochs=10, batch_size=16, validation_data=(x_test, y_test))
 
-model.save('data/h5/cholletmodel-mnist.h5') # 97.5%
+test_score = model.evaluate(x_test, y_test)
+print("Test accuracy {:.2f}%".format(test_score[1] * 100))
+
+model.save('data/mnist/cnn.h5') # 97.5%
 
 import matplotlib.pyplot as plt
 f, ax = plt.subplots()
@@ -60,5 +63,4 @@ ax.set_xlabel('Epoch')
 ax.set_ylabel('Accuracy')
 plt.show()
 
-test_score = model.evaluate(x_test, y_test)
-print("Test accuracy {:.2f}%".format(test_score[1] * 100))
+

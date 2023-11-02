@@ -7,6 +7,7 @@ app = Flask(__name__)
 image_service = tensorflow_service.ImageNet()
 pet_service = tensorflow_service.DogsVsCatsService("data/dogsvscats/cnn-77.h5")
 cancer_service = tensorflow_service.CancerTFService("data/cancer/mlp.h5", "data/cancer/mlp_scaler.pickle")
+mnist_service = tensorflow_service.MNISTTFService("data/mnist/cnn.h5")
 
 
 @app.route("/")
@@ -30,6 +31,13 @@ def imagenet():
         f.write(data)
     res = image_service.predict(file)
     print(f"ImageNet: {res}")
+    return jsonify(res)
+
+@app.route("/mnist", methods=['POST'])
+def mnist():
+    features = request.json
+    res = mnist_service.predict(features)
+    print(f"MNIST: {res}")
     return jsonify(res)
 
 @app.route("/pets", methods=['POST'])

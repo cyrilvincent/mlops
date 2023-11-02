@@ -34,6 +34,25 @@ class ImageNet:
         label = label[0][0]
         return label[1], float(label[2])
 
+class MNISTTFService:
+
+    def __init__(self, path):
+        self.model = tf.keras.models.load_model(path)
+
+    def predict(self, matrix: List[List[int]]):
+        cube = np.array([matrix], dtype=np.float64)
+        cube *= 1/255
+        res = self.model.predict(cube)[0]
+        return int(res.argmax())
+
+    def predict_top10(self, matrix: List[List[int]]):
+        cube = np.array([matrix], dtype=np.float64)
+        cube *= 1/255
+        res = self.model.predict(cube)[0]
+        return [float(x) for x in res]
+
+
+
 class DogsVsCatsService:
 
     def __init__(self, path):
