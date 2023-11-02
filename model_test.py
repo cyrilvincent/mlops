@@ -2,8 +2,7 @@ import json
 import unittest
 
 import cancer_sklearn_service
-import dogsvscats_service
-import imagenet_service
+import tensorflow_service
 import mnist_sklearn_service
 
 class ModelTest(unittest.TestCase):
@@ -38,12 +37,18 @@ class ModelTest(unittest.TestCase):
         self.assertEqual([1,0], res)
 
     def test_imagenet_mobilenet(self):
-        s = imagenet_service.ImageNet()
+        s = tensorflow_service.ImageNet()
         res, score = s.predict("data/img/mug.jpg")
         self.assertEqual("coffee_mug", res)
         self.assertAlmostEquals(0.7, score, delta=0.1)
 
     def test_dogsvscats_cnn(self):
-        s = dogsvscats_service.DogsVsCatsService("data/dogsvscats/cnn-77.h5")
+        s = tensorflow_service.DogsVsCatsService("data/dogsvscats/cnn-77.h5")
         res, score = s.predict("data/dogsvscats/validation/cats/cat.1000.jpg")
         self.assertEqual("cat", res)
+
+    def test_cancer_tf(self):
+        s = tensorflow_service.CancerTFService("data/cancer/mlp.h5", "data/cancer/mlp_scaler.pickle")
+        vector = [17.99,10.38,122.8,1001,0.1184,0.2776,0.3001,0.1471,0.2419,0.07871,1.095,0.9053,8.589,153.4,0.006399,0.04904,0.05373,0.01587,0.03003,0.006193,25.38,17.33,184.6,2019,0.1622,0.6656,0.7119,0.2654,0.4601,0.1189]
+        res, score = s.predict(vector)
+        self.assertEqual(1, res)

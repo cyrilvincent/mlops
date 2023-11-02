@@ -1,17 +1,25 @@
 import uuid
 import tensorflow as tf
 from flask import Flask, request, jsonify
-
-import dogsvscats_service
-import imagenet_service
+import tensorflow_service
 
 app = Flask(__name__)
-image_service = imagenet_service.ImageNet()
-pet_service = dogsvscats_service.DogsVsCatsService("data/dogsvscats/cnn-77.h5")
+image_service = tensorflow_service.ImageNet()
+pet_service = tensorflow_service.DogsVsCatsService("data/dogsvscats/cnn-77.h5")
+cancer_service = tensorflow_service.CancerTFService("data/cancer/mlp.h5", "data/cancer/mlp_scaler.pickle")
+
 
 @app.route("/")
 def root():
     return jsonify(tf.__version__)
+
+@app.route("/cancer", methods=['POST'])
+def cancer():
+    features = request.json
+    print(f"Cancer: {features}")
+    res = cancer_service.predict(features)
+    print(f"Cancer: {res}")
+    return jsonify(res)
 
 @app.route("/imagenet", methods=['POST'])
 def imagenet():
