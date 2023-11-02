@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  sklearn_api:
+    build:
+      context: .
+    ports:
+      - 5000:5000
+
+  tf_api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.tf
+    ports:
+      - 5001:5001
+
+
+
+

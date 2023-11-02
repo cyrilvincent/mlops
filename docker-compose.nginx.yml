@@ -1,0 +1,80 @@
+version: '3.1'
+services:
+  nginx:
+    image: nginx
+    restart: always
+    depends_on:
+      - web
+      - api
+    ports:
+      - 127.0.0.1:8082:80
+    volumes:
+      - ../config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  api:
+    image: api
+    restart: always
+    build:
+      context: ./api/dist
+      dockerfile: ./Dockerfile
+    depends_on:
+      - database
+      - orthanc_cloud
+    volumes:
+      - ./api/dist:/App
+      - ./logs:/App/logs
+      - ./pdf_storage:/tmp/pdf:rw
+      - ./Img:/App/Img
+## À ajouter en prod
+#    environment:
+#      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - 127.0.0.1:8081:80
+  web:
+    image: "trion/nginx-angular"
+    depends_on:
+      - api
+    restart: always
+    ports:
+      - 127.0.0.1:8080:8080
+    volumes:
+      - ./front/dist/front:/usr/share/nginx/html
+  scc-web:
+    image: "trion/nginx-angular"
+    depends_on:
+      - api
+    restart: always
+    ports:
+      - 127.0.0.1:8079:8080
+    volumes:
+      - ./front/dist/front-scc:/usr/share/nginx/html
+  cron:
+    image: cron
+    restart: always
+    build:
+      context: ./api/cron
+      dockerfile: ./Dockerfile
+    depends_on:
+      - database
+      - orthanc_cloud
+    volumes:
+      - ./api/cron:/App
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 127.0.0.1:8086:5000
+  ftp:
+    image: ftp
+    restart: always
+    build:
+      context: ./api/ftp
+      dockerfile: ./Dockerfile
+    depends_on:
+      - database
+      - orthanc_cloud
+    volumes:
+      - ./api/ftp:/App
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 127.0.0.1:8081:80
+      - "8021-8040:8021-8040"
