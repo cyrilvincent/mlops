@@ -2,6 +2,7 @@ import json
 import unittest
 
 import cancer_sklearn_service
+import dogsvscats_service
 import imagenet_service
 import mnist_sklearn_service
 
@@ -41,3 +42,8 @@ class ModelTest(unittest.TestCase):
         res, score = s.predict("data/img/mug.jpg")
         self.assertEqual("coffee_mug", res)
         self.assertAlmostEquals(0.7, score, delta=0.1)
+
+    def test_dogsvscats_cnn(self):
+        s = dogsvscats_service.DogsVsCatsService("data/dogsvscats/cnn-77.h5")
+        res, score = s.predict("data/dogsvscats/validation/cats/cat.1000.jpg")
+        self.assertEqual("cat", res)

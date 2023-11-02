@@ -21,6 +21,13 @@ path = "data/img/mug.jpg"
 files = {'image': open(path, 'rb')}
 r = requests.post(url, files=files)
 print(r.content)
+
+print("Pets")
+url = 'http://127.0.0.1:5001/pets'
+path = "data/dogsvscats/validation/cats/cat.1000.jpg"
+files = {'image': open(path, 'rb')}
+r = requests.post(url, files=files)
+print(r.content)
 #
 # #docker compose up --build
 # #Si bug de build docker build .
