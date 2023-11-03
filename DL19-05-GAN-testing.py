@@ -24,10 +24,10 @@ def save_plot(examples, n):
 	pyplot.show()
 
 # load model
-model = load_model('data/h5/generator_model_100.h5')
+model = load_model('data/mnist/gan/generator_model_010.h5')
 # generate images
-latent_points = generate_latent_points(100, 25)
+latent_points = generate_latent_points(100, 10)
 # generate images
 X = model.predict(latent_points)
 # plot the result
-save_plot(X, 5)
+save_plot(X, 1)

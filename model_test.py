@@ -67,9 +67,14 @@ class ModelTest(unittest.TestCase):
         res = s.predict("data/drivers/img_1.jpg")
         print(res)
 
-    def test_mnist_noise(self):
+    def test_mnist_denoise(self):
         s = tensorflow_service.MnistNoiseService("data/mnist/ae_encoder.h5", "data/mnist/ae_decoder.h5")
         with open("data/mnist/noise_0.json") as f:
             matrix = json.load(f)
         res = s.predict(matrix)
+        print(res)
+
+    def test_mnist_gan(self):
+        s = tensorflow_service.MnistGanService("data/mnist/gan/generator_model_010.h5")
+        res = s.predict(0)
         print(res)
