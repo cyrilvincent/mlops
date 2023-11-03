@@ -13,6 +13,15 @@ services:
     ports:
       - 5001:5001
 
+  nginx:
+    image: nginx
+    build:
+      context: .
+      dockerfile: ./Dockerfile.nginx
+    restart: always
+    ports:
+      - 80:80
+
 
 
 
