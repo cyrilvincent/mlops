@@ -1,0 +1,15 @@
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\bin\Debug\net7.0\ClientConsole.exe
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\bin\Debug\net7.0\ClientConsole.deps.json
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\bin\Debug\net7.0\ClientConsole.runtimeconfig.json
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\bin\Debug\net7.0\ClientConsole.dll
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\bin\Debug\net7.0\ClientConsole.pdb
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\obj\Debug\net7.0\ClientConsole.csproj.AssemblyReference.cache
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\obj\Debug\net7.0\ClientConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\obj\Debug\net7.0\ClientConsole.AssemblyInfoInputs.cache
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\obj\Debug\net7.0\ClientConsole.AssemblyInfo.cs
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\obj\Debug\net7.0\ClientConsole.csproj.CoreCompileInputs.cache
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\obj\Debug\net7.0\ClientConsole.dll
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\obj\Debug\net7.0\refint\ClientConsole.dll
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\obj\Debug\net7.0\ClientConsole.pdb
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\obj\Debug\net7.0\ClientConsole.genruntimeconfig.cache
+C:\Users\conta\git-CVC\Formation\Python\MLOps\gitmlops\dotnet\ClientConsole\ClientConsole\obj\Debug\net7.0\ref\ClientConsole.dll
