@@ -1,8 +1,5 @@
 *.zip
 *.rar
-*.large.*
-*large*
-large/**
 *ckpt*.*
 cows/*
 logs/**
@@ -11,3 +8,4 @@ logs/**
 vgg16model*.h5
 temp
 cnn*.h5
+.idea
