@@ -22,4 +22,4 @@ COPY nginx/nginx.conf /etc/nginx
 # Expose the port that the application listens on.
 EXPOSE 80
 
-CMD service nginx start
+CMD service nginx start && uwsgi --ini uwsgi.ini
