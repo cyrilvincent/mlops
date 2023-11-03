@@ -66,3 +66,10 @@ class ModelTest(unittest.TestCase):
         s = tensorflow_service.DriverService("data/drivers/model.h5")
         res = s.predict("data/drivers/img_1.jpg")
         print(res)
+
+    def test_mnist_noise(self):
+        s = tensorflow_service.MnistNoiseService("data/mnist/ae_encoder.h5", "data/mnist/ae_decoder.h5")
+        with open("data/mnist/noise_0.json") as f:
+            matrix = json.load(f)
+        res = s.predict(matrix)
+        print(res)

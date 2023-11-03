@@ -84,6 +84,22 @@ class DriverService:
         res = self.model.predict(img)[0]
         return res
 
+class MnistNoiseService:
+
+    def __init__(self, encoder_path, decoder_path):
+        self.encoder = tf.keras.models.load_model(encoder_path)
+        self.decoder = tf.keras.models.load_model(decoder_path)
+
+    def predict(self, matrix: List[List[int]]):
+        cube = np.array([matrix], dtype=np.float64)
+        cube *= 1/255
+        encoded_imgs = self.encoder(cube).numpy()
+        res = self.decoder(encoded_imgs).numpy()
+        res = res.reshape(-1, 28, 28)
+        res = np.array(res[0]) * 255
+        res = res.astype(np.int_)
+        return res
+
 
 
 

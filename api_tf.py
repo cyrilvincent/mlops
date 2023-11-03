@@ -11,6 +11,7 @@ pet_service = tensorflow_service.DogsVsCatsService("data/dogsvscats/cnn-77.h5")
 cancer_service = tensorflow_service.CancerTFService("data/cancer/mlp.h5", "data/cancer/mlp_scaler.pickle")
 mnist_service = tensorflow_service.MNISTTFService("data/mnist/cnn.h5")
 driver_service = tensorflow_service.DriverService("data/drivers/model.h5")
+denoise_service = tensorflow_service.MnistNoiseService("data/mnist/ae_encoder.h5", "data/mnist/ae_decoder.h5")
 
 
 @app.route("/")
@@ -64,7 +65,15 @@ def drivers():
     res = driver_service.predict(file)
     print(f"Drivers: {res}")
     s = json.dumps(res, cls=numpy_serializer.NumpyArrayEncoder)
-    return jsonify(s)
+    return jsonify(eval(s))
+
+@app.route("/denoise", methods=['POST'])
+def denoise():
+    features = request.json
+    res = denoise_service.predict(features)
+    print(f"MNIST Denoise: {res}")
+    s = json.dumps(res, cls=numpy_serializer.NumpyArrayEncoder)
+    return jsonify(eval(s))
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5001)
