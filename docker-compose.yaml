@@ -30,6 +30,20 @@ services:
     restart: always
     ports:
       - 9090:9090
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1000M
+
+  nginx_and_wsgi:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.nginx.wsgi
+    restart: always
+    ports:
+      - 81:80
+
 
 
 
