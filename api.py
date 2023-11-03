@@ -1,7 +1,6 @@
 import numpy as np
 from flask import Flask, request, jsonify
 import pickle
-import cancer_sklearn_service
 import sklearn_service
 
 

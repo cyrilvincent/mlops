@@ -20,7 +20,12 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
     python -m pip install -r requirements.txt
 
-# Copy the source code into the container.
+# NGINX
+RUN apt-get -y update
+RUN apt-get -y install gcc
+RUN python -m pip install uWSGI==2.0.23
+COPY nginx/uwsgi.ini .
+
 COPY data/cancer/*.pickle data/cancer/
 COPY data/house/*.pickle data/house/
 COPY data/mnist/*.pickle data/mnist/
@@ -28,7 +33,6 @@ COPY api.py .
 COPY sklearn_service.py .
 
 # Expose the port that the application listens on.
-EXPOSE 5000
+EXPOSE 80
 
-# Run the application.
-CMD python api.py
+CMD uwsgi --ini uwsgi.ini

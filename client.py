@@ -68,5 +68,10 @@ r = requests.get(f"{url}")
 with open("data/mnist/gan/gan.json", "w") as f:
     f.write(r.content.decode())
 
+print("Loyer NGINX")
+url = 'http://127.0.0.1/house'
+r = requests.get(f"{url}/100")
+print(r.content.decode())
+
 # docker compose up --build
 # Si bug de build docker build .

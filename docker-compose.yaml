@@ -14,13 +14,22 @@ services:
       - 5001:5001
 
   nginx:
-    image: nginx
     build:
       context: .
       dockerfile: ./Dockerfile.nginx
+    depends_on:
+      - wsgi
     restart: always
     ports:
       - 80:80
+
+  wsgi:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.wsgi
+    restart: always
+    ports:
+      - 9090:9090
 
 
 
