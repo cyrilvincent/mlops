@@ -12,7 +12,7 @@ cancer_service = tensorflow_service.CancerTFService("data/cancer/mlp.h5", "data/
 mnist_service = tensorflow_service.MNISTTFService("data/mnist/cnn.h5")
 driver_service = tensorflow_service.DriverService("data/drivers/model.h5")
 denoise_service = tensorflow_service.MnistNoiseService("data/mnist/ae_encoder.h5", "data/mnist/ae_decoder.h5")
-gan_service = tensorflow_service.MnistGanService("data/mnist/gan/generator_model_010.h5")
+gan_service = tensorflow_service.MnistGanService("data/mnist/gan/generator_model_100.h5")
 
 
 @app.route("/")
@@ -76,9 +76,9 @@ def denoise():
     s = json.dumps(res, cls=numpy_serializer.NumpyArrayEncoder)
     return jsonify(eval(s))
 
-@app.route("/gan/<int:num>")
-def gan(num):
-    res = gan_service.predict(num)
+@app.route("/gan")
+def gan():
+    res = gan_service.predict()
     print(f"MNIST GAN: {res}")
     s = json.dumps(res, cls=numpy_serializer.NumpyArrayEncoder)
     return jsonify(eval(s))

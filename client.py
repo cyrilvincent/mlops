@@ -59,7 +59,7 @@ with open("data/mnist/denoise.json", "w") as f:
 
 print("MNIST GAN => data/mnist/gan/gan.json")
 url = 'http://127.0.0.1:5001/gan'
-r = requests.get(f"{url}/0")
+r = requests.get(f"{url}")
 with open("data/mnist/gan/gan.json", "w") as f:
     f.write(r.content.decode())
 

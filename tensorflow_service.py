@@ -105,16 +105,16 @@ class MnistGanService:
     def __init__(self, path):
         self.model = tf.keras.models.load_model(path)
         self.latent_dim = 100
-        self.n_samples = 10
+        self.n_samples = 1
 
-    def predict(self, num: int):
+    def predict(self):
         x_input = np.random.randn(self.latent_dim * self.n_samples)
         latent_points = x_input.reshape(self.n_samples, self.latent_dim)
         x = self.model.predict(latent_points)
         x = x.reshape(-1, 28, 28)
         x *= 255
         x = x.astype(np.int_)
-        return x[num]
+        return x[0]
 
 
 
