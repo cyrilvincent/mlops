@@ -2,6 +2,7 @@ import pickle
 from typing import List
 import numpy as np
 import tensorflow as tf
+import numpy_serializer
 
 
 class CancerTFService:
@@ -69,6 +70,19 @@ class DogsVsCatsService:
             s = "cat"
             res = 1 - res
         return s, float(res)
+
+class DriverService:
+
+    def __init__(self, path):
+        self.model = tf.keras.models.load_model(path)
+
+    def predict(self, path: str):
+        img = tf.keras.preprocessing.image.load_img(path, target_size=(224, 224))
+        img = tf.keras.preprocessing.image.img_to_array(img)
+        img *= 1. / 255
+        img = img.reshape((1, img.shape[0], img.shape[1], img.shape[2]))
+        res = self.model.predict(img)[0]
+        return res
 
 
 

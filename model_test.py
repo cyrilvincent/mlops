@@ -44,7 +44,7 @@ class ModelTest(unittest.TestCase):
 
     def test_dogsvscats_cnn(self):
         s = tensorflow_service.DogsVsCatsService("data/dogsvscats/cnn-77.h5")
-        res, score = s.predict("data/dogsvscats/validation/cats/cat.1000.jpg")
+        res, score = s.predict("data/dogsvscats/small/validation/cats/cat.1000.jpg")
         self.assertEqual("cat", res)
 
     def test_cancer_tf(self):
@@ -60,4 +60,9 @@ class ModelTest(unittest.TestCase):
         res = s.predict(matrix)
         self.assertEqual(0, res)
         res = s.predict_top10(matrix)
+        print(res)
+
+    def test_driver_tf(self):
+        s = tensorflow_service.DriverService("data/drivers/model.h5")
+        res = s.predict("data/drivers/img_1.jpg")
         print(res)
