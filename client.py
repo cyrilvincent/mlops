@@ -68,6 +68,5 @@ r = requests.get(f"{url}")
 with open("data/mnist/gan/gan.json", "w") as f:
     f.write(r.content.decode())
 
-#
-# #docker compose up --build
-# #Si bug de build docker build .
+# docker compose up --build
+# Si bug de build docker build .

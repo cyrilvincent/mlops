@@ -76,5 +76,5 @@ class ModelTest(unittest.TestCase):
 
     def test_mnist_gan(self):
         s = tensorflow_service.MnistGanService("data/mnist/gan/generator_model_100.h5")
-        res = s.predict(0)
+        res = s.predict()
         print(res)

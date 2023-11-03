@@ -2,10 +2,14 @@ import pickle
 from typing import List
 import numpy as np
 import tensorflow as tf
-import numpy_serializer
+import abc
 
+class AbstractService(metaclass=abc.ABCMeta):
 
-class CancerTFService:
+    @abc.abstractmethod
+    def predict(self, x):...
+
+class CancerTFService(AbstractService):
 
     def __init__(self, tf_path, pickle_path):
         self.model = tf.keras.models.load_model(tf_path)
@@ -20,7 +24,7 @@ class CancerTFService:
             return 1, float(res)
         return 0, float(1 - res)
 
-class ImageNet:
+class ImageNet(AbstractService):
 
     def __init__(self):
         self.model = tf.keras.applications.MobileNetV2()
@@ -35,7 +39,7 @@ class ImageNet:
         label = label[0][0]
         return label[1], float(label[2])
 
-class MNISTTFService:
+class MNISTTFService(AbstractService):
 
     def __init__(self, path):
         self.model = tf.keras.models.load_model(path)
@@ -53,8 +57,7 @@ class MNISTTFService:
         return [float(x) for x in res]
 
 
-
-class DogsVsCatsService:
+class DogsVsCatsService(AbstractService):
 
     def __init__(self, path):
         self.model = tf.keras.models.load_model(path)
@@ -71,7 +74,7 @@ class DogsVsCatsService:
             res = 1 - res
         return s, float(res)
 
-class DriverService:
+class DriverService(AbstractService):
 
     def __init__(self, path):
         self.model = tf.keras.models.load_model(path)
@@ -84,7 +87,7 @@ class DriverService:
         res = self.model.predict(img)[0]
         return res
 
-class MnistNoiseService:
+class MnistNoiseService(AbstractService):
 
     def __init__(self, encoder_path, decoder_path):
         self.encoder = tf.keras.models.load_model(encoder_path)
@@ -100,7 +103,7 @@ class MnistNoiseService:
         res = res.astype(np.int_)
         return res
 
-class MnistGanService:
+class MnistGanService(AbstractService):
 
     def __init__(self, path):
         self.model = tf.keras.models.load_model(path)
