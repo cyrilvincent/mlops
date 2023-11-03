@@ -4,7 +4,6 @@
 cows/*
 logs/**
 .ipynb**/**
-/data/dogsvscats/large/
 vgg16model*.h5
 temp
 cnn*.h5
