@@ -49,6 +49,7 @@ model.summary()
 hist = model.fit(x=x_train,y=y_train, epochs=10, batch_size=16, validation_data=(x_test, y_test))
 
 test_score = model.evaluate(x_test, y_test)
+y = model.predict(x_test, batch_size=16, use_multiprocessing=False, workers=1)
 print("Test accuracy {:.2f}%".format(test_score[1] * 100))
 
 model.save('data/mnist/cnn.h5') # 97.5%

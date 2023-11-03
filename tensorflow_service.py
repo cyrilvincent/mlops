@@ -1,5 +1,5 @@
 import pickle
-from typing import List
+from typing import List, Tuple
 import numpy as np
 import tensorflow as tf
 import abc
@@ -16,7 +16,7 @@ class CancerTFService(AbstractService):
         with open(pickle_path, "rb") as f:
             self.scaler = pickle.load(f)
 
-    def predict(self, features: List[float]):
+    def predict(self, features: List[float]) -> Tuple[int, float]:
         features = np.array([features])
         normalized = self.scaler.transform(features)
         res = self.model.predict(normalized)[0][0]
@@ -24,12 +24,18 @@ class CancerTFService(AbstractService):
             return 1, float(res)
         return 0, float(1 - res)
 
+    def predicts(self, features: List[List[float]]) -> List[float]:
+        features = np.array(features)
+        normalized = self.scaler.transform(features)
+        res = self.model.predict(normalized, batch_size=len(features), use_multiprocessing=False, workers=1)[0]
+        return [float(x) for x in res]
+
 class ImageNet(AbstractService):
 
     def __init__(self):
         self.model = tf.keras.applications.MobileNetV2()
 
-    def predict(self, path):
+    def predict(self, path: str) -> Tuple[str, float]:
         image = tf.keras.utils.load_img(path, target_size=(224, 224))
         image = tf.keras.utils.img_to_array(image)
         image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
@@ -44,13 +50,13 @@ class MNISTTFService(AbstractService):
     def __init__(self, path):
         self.model = tf.keras.models.load_model(path)
 
-    def predict(self, matrix: List[List[int]]):
+    def predict(self, matrix: List[List[int]]) -> int:
         cube = np.array([matrix], dtype=np.float64)
         cube *= 1/255
         res = self.model.predict(cube)[0]
         return int(res.argmax())
 
-    def predict_top10(self, matrix: List[List[int]]):
+    def predict_top10(self, matrix: List[List[int]]) -> List[float]:
         cube = np.array([matrix], dtype=np.float64)
         cube *= 1/255
         res = self.model.predict(cube)[0]
@@ -62,7 +68,7 @@ class DogsVsCatsService(AbstractService):
     def __init__(self, path):
         self.model = tf.keras.models.load_model(path)
 
-    def predict(self, path: str):
+    def predict(self, path: str) -> Tuple[int, float]:
         img = tf.keras.preprocessing.image.load_img(path, target_size=(224, 224))
         img = tf.keras.preprocessing.image.img_to_array(img)
         img *= 1. / 255
@@ -79,7 +85,7 @@ class DriverService(AbstractService):
     def __init__(self, path):
         self.model = tf.keras.models.load_model(path)
 
-    def predict(self, path: str):
+    def predict(self, path: str) -> List[float]:
         img = tf.keras.preprocessing.image.load_img(path, target_size=(224, 224))
         img = tf.keras.preprocessing.image.img_to_array(img)
         img *= 1. / 255
@@ -102,6 +108,7 @@ class MnistNoiseService(AbstractService):
         res = np.array(res[0]) * 255
         res = res.astype(np.int_)
         return res
+
 
 class MnistGanService(AbstractService):
 

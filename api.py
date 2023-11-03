@@ -2,12 +2,12 @@ import numpy as np
 from flask import Flask, request, jsonify
 import pickle
 import cancer_sklearn_service
-import mnist_sklearn_service
+import sklearn_service
 
 
 app = Flask(__name__)
-cancer_service = cancer_sklearn_service.CancerSklearnService("data/cancer/rf-97.pickle")
-mnist_service = mnist_sklearn_service.MnistSklearnService("data/mnist/rf-93.pickle")
+cancer_service = sklearn_service.CancerSklearnService("data/cancer/rf-97.pickle")
+mnist_service = sklearn_service.MnistSklearnService("data/mnist/rf-93.pickle")
 
 @app.route("/")
 def root():

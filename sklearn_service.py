@@ -24,5 +24,24 @@ class MnistSklearnService:
         res = [int(x) for x in res]
         return res
 
+class CancerSklearnService:
+
+    def __init__(self, path):
+        with open(path, "rb") as f:
+            self.scaler, self.model = pickle.load(f)
+
+    def predict(self, vector: List[float]):
+        matrix = np.array([vector])
+        normalized = self.scaler.transform(matrix)
+        res = self.model.predict(normalized)
+        return int(res[0])
+
+    def predicts(self, matrix: List[List[float]]):
+        matrix = np.array(matrix)
+        normalized = self.scaler.transform(matrix)
+        res = self.model.predict(normalized)
+        res = [float(x) for x in res]
+        return res
+
 
 
