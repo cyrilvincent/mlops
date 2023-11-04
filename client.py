@@ -73,5 +73,6 @@ url = 'http://127.0.0.1/house'
 r = requests.get(f"{url}/100")
 print(r.content.decode())
 
+
 # docker compose up --build
 # Si bug de build docker build .
