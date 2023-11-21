@@ -61,20 +61,22 @@ if __name__ == '__main__':
     # with open("data/chatgpt/python.txt", "w") as f:
     #     f.write(res)
     #
-    # openai = OpenAIChatGPTService()
-    # with open("data/chatgpt/python.txt") as f:
-    #     text = f.read()
-    # summary = openai.predict(text)
-    # print(summary)
+    openai = OpenAIChatGPTService()
+    with open("data/chatgpt/python.txt") as f:
+        text = f.read()
+    summary = openai.predict(text)
+    print(summary)
+    with open("data/chatgpt/summary", "w") as f:
+        f.write(summary)
     #
     # openai = OpenAIDallEService()
     # url = openai.predict("Un python autour d'un ordinateur des années 80")
     # print(url)
 
-    openai = OpenAIMp3()
-    with open("data/chatgpt/python.txt") as f:
-        text = f.read()
-    openai.predict(text)
+    # openai = OpenAIMp3()
+    # with open("data/chatgpt/python.txt") as f:
+    #     text = f.read()
+    # openai.predict(text)
 
 
 

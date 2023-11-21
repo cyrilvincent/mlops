@@ -8,3 +8,4 @@ vgg16model*.h5
 temp
 cnn*.h5
 .idea
+*.env

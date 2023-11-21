@@ -1,0 +1,11 @@
+Résumé en 5 parties :
+
+1. Introduction à Python : Explication de Python comme langage de programmation simple et largement utilisé, avec la possibilité de fonctionner dans différents environnements d'édition.
+
+2. Utilisation de la console : Présentation de la console Python où l'on peut effectuer des calculs, définir des variables et exécuter des programmes. Exemple de calculs et d'affectation de valeurs à des variables.
+
+3. Instructions mathématiques : Présentation des opérations mathématiques telles que les puissances, les divisions entières et les restes de division. Mention de la nécessité de télécharger le module math pour certaines opérations mathématiques plus avancées.
+
+4. Gestion des chaînes de caractères : Explication de la façon dont Python gère les chaînes de caractères en les définissant entre guillemets. Exemples de concaténation et d'affichage de chaînes de caractères.
+
+5. Utilisation de l'éditeur de programme : Présentation de l'éditeur de programme où l'on peut écrire des programmes, les exécuter depuis la console et les enregistrer. Exemple d'un programme simple avec des instructions d'affectation et d'opérations mathématiques, suivi de son exécution dans la console.
