@@ -1,0 +1,10 @@
+flask
+gunicorn
+torch
+numpy
+transformers
+optimum
+accelerate
+packaging
+ninja
+flash-attn==2.3.3

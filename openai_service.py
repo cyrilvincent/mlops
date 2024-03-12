@@ -30,6 +30,17 @@ class OpenAIChatGPTService:
                                                     )
         return completion.choices[0].message.content
 
+    def correction(self, text: str) -> str:
+        completion = self.client.chat.completions.create(model="gpt-3.5-turbo",
+                                                         # response_format={"type": "json_object"},
+                                                    messages=[
+                                                        {"role": "system",
+                                                         "content": "Corrige moi ce texte dans le contexte de la programmation informatique"},
+                                                        {"role": "user", "content": text}
+                                                    ]
+                                                    )
+        return completion.choices[0].message.content
+
 class OpenAIDallEService(OpenAIChatGPTService):
 
     def predict(self, text: str) -> str:
@@ -61,17 +72,26 @@ if __name__ == '__main__':
     # with open("data/chatgpt/python.txt", "w") as f:
     #     f.write(res)
     #
-    openai = OpenAIChatGPTService()
-    with open("data/chatgpt/python.txt") as f:
-        text = f.read()
-    summary = openai.predict(text)
-    print(summary)
-    with open("data/chatgpt/summary", "w") as f:
-        f.write(summary)
+    # openai = OpenAIChatGPTService()
+    # with open("data/chatgpt/python.txt") as f:
+    #     text = f.read()
+    # summary = openai.predict(text)
+    # print(summary)
+    # with open("data/chatgpt/summary.txt", "w") as f:
+    #     f.write(summary)
     #
-    # openai = OpenAIDallEService()
-    # url = openai.predict("Un python autour d'un ordinateur des années 80")
-    # print(url)
+    # openai = OpenAIChatGPTService()
+    # with open("data/chatgpt/python.txt") as f:
+    #     text = f.read()
+    # correction = openai.correction(text)
+    # print(correction)
+    # with open("data/chatgpt/python_correction.txt", "w") as f:
+    #     f.write(correction)
+
+    openai = OpenAIDallEService()
+    # url = openai.predict("Un Python sur un ordinateur des années 80")
+    url = openai.predict("Un PACS (Picture archiving and communication system) dans une clinique vétérinaire avec des radiographies de squelette de chiens")
+    print(url)
 
     # openai = OpenAIMp3()
     # with open("data/chatgpt/python.txt") as f:

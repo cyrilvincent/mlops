@@ -5,6 +5,8 @@ services:
       context: .
     ports:
       - 5000:5000
+    volumes:
+      - ./logs:/app/logs:rw
 
   tf_api:
     build:
@@ -30,6 +32,8 @@ services:
     restart: always
     ports:
       - 9090:9090
+    volumes:
+      - ./logs/wsgi:/app/logs:rw
     deploy:
       resources:
         limits:
@@ -43,6 +47,9 @@ services:
     restart: always
     ports:
       - 81:80
+    volumes:
+      - ./logs/nginx_wsgi:/app/logs:rw
+
 
 
 

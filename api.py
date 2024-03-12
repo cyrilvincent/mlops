@@ -2,15 +2,21 @@ import numpy as np
 from flask import Flask, request, jsonify
 import pickle
 import sklearn_service
+import logging.config
+import os
 
-
+logging.config.fileConfig("./logging.ini")
+logger = logging.getLogger(__name__)
+logger.info("Starting")
 app = Flask(__name__)
 cancer_service = sklearn_service.CancerSklearnService("data/cancer/rf-97.pickle")
 mnist_service = sklearn_service.MnistSklearnService("data/mnist/rf-93.pickle")
 
 @app.route("/")
 def root():
-    return jsonify("hello")
+    print("Hello")
+    logger.info("Hello")
+    return jsonify("Hello")
 
 @app.route("/house/<int:surface>")
 def house(surface):

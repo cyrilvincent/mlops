@@ -17,6 +17,7 @@ COPY data/house/*.pickle data/house/
 COPY data/mnist/*.pickle data/mnist/
 COPY api.py .
 COPY sklearn_service.py .
+COPY logging.ini .
 
 EXPOSE 5000
 
