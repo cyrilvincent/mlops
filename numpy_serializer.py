@@ -17,6 +17,6 @@ if __name__ == '__main__':
         x_train, y_train = f["x_train"], f["y_train"] # 60000
         x_test, y_test = f["x_test"], f["y_test"] # 10000
 
-    s = json.dumps(x_test[0], cls=NumpyArrayEncoder)
-    print(s)
+    np.set_printoptions(edgeitems=30, linewidth=100000)
+    print(x_test[0])
 

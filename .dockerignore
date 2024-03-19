@@ -32,3 +32,4 @@ nginx/Dockerfile.txt
 **/values.dev.yaml
 LICENSE
 README.md
+**/logs/**

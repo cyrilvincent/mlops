@@ -1,11 +1,9 @@
-Résumé en 5 parties :
+1. Python est un langage de programmation simple et largement utilisé, adapté pour écrire des programmes informatiques. Il peut fonctionner dans divers environnements, avec une distribution facile à installer fournie par l'académie d'Amiens.
 
-1. Introduction à Python : Explication de Python comme langage de programmation simple et largement utilisé, avec la possibilité de fonctionner dans différents environnements d'édition.
+2. L'environnement Python comporte plusieurs fenêtres, telles que l'explorateur de fichiers, la console et l'éditeur de programme. La console permet d'effectuer des calculs, de définir des variables et d'écrire des programmes, en utilisant des opérations mathématiques simples comme les puissances et divisions.
 
-2. Utilisation de la console : Présentation de la console Python où l'on peut effectuer des calculs, définir des variables et exécuter des programmes. Exemple de calculs et d'affectation de valeurs à des variables.
+3. Python dispose de modules comme "math" pour des fonctions mathématiques avancées, telles que la racine carrée. Les chaînes de caractères sont gérées en les définissant entre guillemets, ce qui permet de les manipuler et de les concaténer.
 
-3. Instructions mathématiques : Présentation des opérations mathématiques telles que les puissances, les divisions entières et les restes de division. Mention de la nécessité de télécharger le module math pour certaines opérations mathématiques plus avancées.
+4. L'éditeur de programme est l'endroit où l'on peut écrire des programmes Python, les exécuter dans la console et les enregistrer pour une utilisation ultérieure. Un exemple de programme simple est fourni, montrant comment affecter des valeurs aux variables et effectuer des opérations mathématiques.
 
-4. Gestion des chaînes de caractères : Explication de la façon dont Python gère les chaînes de caractères en les définissant entre guillemets. Exemples de concaténation et d'affichage de chaînes de caractères.
-
-5. Utilisation de l'éditeur de programme : Présentation de l'éditeur de programme où l'on peut écrire des programmes, les exécuter depuis la console et les enregistrer. Exemple d'un programme simple avec des instructions d'affectation et d'opérations mathématiques, suivi de son exécution dans la console.
+5. Ce tutoriel introductif à l'environnement Python vise à fournir une première approche de la programmation en Python, en mettant en avant les bases telles que la manipulation de variables, les opérations mathématiques et la création de programmes simples.
