@@ -18,6 +18,12 @@ x_test = x_test.reshape(-1, 28*28)
 
 x_train, x_test, y_train, y_test = ms.train_test_split(x_train, y_train, train_size=0.1, test_size=0.9)
 
+# Random Forests : Winner
+# SVM : Peu data
+# KNN : Recommandations
+
+# Tensorflow : NN
+
 model = tree.RandomForestClassifier() # Init
 model.fit(x_train, y_train) # Fit
 
