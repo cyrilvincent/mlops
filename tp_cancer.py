@@ -5,17 +5,23 @@ import sklearn.svm as svm
 import sklearn.neighbors as nn
 import pickle
 import matplotlib.pyplot as plt
+import sklearn.model_selection as ms
+import sklearn.metrics as metrics
 
 dataframe = pd.read_csv("data/cancer/data.csv", index_col="id")
 y = dataframe.diagnosis
 x = dataframe.drop(["diagnosis"], axis=1)
 
+xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, test_size=0.2, train_size=0.8)
+
 model = tree.RandomForestClassifier()
 #model = svm.SVC()
 #model = nn.KNeighborsClassifier()
 
-model.fit(x, y)
-score = model.score(x, y)
+model.fit(xtrain, ytrain) # PAs le droit de fit sur test
+score = model.score(xtrain, ytrain)
+print(score)
+score = model.score(xtest, ytest) # Official
 print(score)
 
 path = f"data/cancer/svm-{int(score*100)}.pickle" # Save
@@ -24,6 +30,9 @@ with open(path, "wb") as f:
 
 y_pred = model.predict(x)
 print(y_pred)
+
+print(metrics.confusion_matrix(y, y_pred))
+print(metrics.classification_report(y, y_pred))
 
 # print(model.feature_importances_)
 # plt.bar(x.columns, model.feature_importances_)
