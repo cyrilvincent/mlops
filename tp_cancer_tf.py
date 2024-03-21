@@ -1,5 +1,3 @@
-import pickle
-
 import sklearn.preprocessing
 import tensorflow as tf
 import pandas
@@ -17,11 +15,12 @@ model = tf.keras.Sequential([
   ])
 
 model.compile(loss="binary_crossentropy", metrics=['accuracy'])
-# for 2 categories bce ~= cce
 model.summary()
 
 # Fit
 # Evaluate
 # Save
+# Predict : cancer_tf_predict.py
+# Netron view h5
 
 
