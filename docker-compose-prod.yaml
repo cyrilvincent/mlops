@@ -1,0 +1,34 @@
+version: '3.1'
+services:
+
+  nginx-prod:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.nginx
+    depends_on:
+      - wsgi-prod
+    restart: always
+    ports:
+      - 80:80
+
+  wsgi-prod:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.wsgi
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - ./logs/wsgi:/app/logs:rw
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 8000M
+
+
+
+
+
+
+
