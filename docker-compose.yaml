@@ -13,3 +13,19 @@ services:
       ports:
         - 5001:5001
 
+  nginx:
+      build:
+        context: .
+        dockerfile: ./Dockerfile.nginx
+      depends_on:
+        - wsgi
+      ports:
+        - 80:80
+
+  wsgi:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.wsgi
+    ports:
+      - 9090:9090
+
