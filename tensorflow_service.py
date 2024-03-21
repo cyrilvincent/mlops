@@ -1,4 +1,5 @@
 import pickle
+from json import JSONEncoder
 from typing import List, Tuple
 import numpy as np
 import tensorflow as tf
@@ -79,4 +80,10 @@ class DogsVsCatsService(AbstractService):
             s = "cat"
             res = 1 - res
         return s, float(res)
+
+class NumpyArrayEncoder(JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return JSONEncoder.default(self, obj)
 
