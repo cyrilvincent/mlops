@@ -1,9 +1,6 @@
-1. Introduction à Python : Ce texte présente Python comme un langage de programmation simple, concis et largement répandu. Il explique comment Python peut fonctionner dans différents environnements, en utilisant une distribution spécifique disponible grâce à l'académie d'Amien.
-
-2. Utilisation de la console Python : Il décrit l'utilisation de la console Python pour effectuer des calculs, définir des variables, effectuer des opérations mathématiques de base et utiliser des instructions telles que les puissances, les divisions entières et le reste de la division euclidienne.
-
-3. Importation de modules mathématiques : Le texte explique comment importer un module mathématique nommé "math" pour utiliser des fonctions mathématiques avancées en Python, telles que calculer la racine carrée d'un nombre ou obtenir une valeur approchée de pi.
-
-4. Manipulation de chaînes de caractères : Il montre comment Python gère les chaînes de caractères en les définissant entre guillemets, affectant des valeurs de chaînes à des variables et effectuant des opérations de concaténation de chaînes.
-
-5. Utilisation de l'éditeur de programme : Enfin, le texte présente l'éditeur de programme comme l'endroit où l'on saisit et exécute un programme. Il montre un exemple de programme simple avec des instructions basiques et explique comment vérifier la syntaxe, exécuter le programme et afficher les résultats.
+Résumé en 5 parties :
+1. Python est un langage de programmation simple et largement utilisé. Il peut fonctionner dans différents environnements, comme celui fourni par l'académie d'Amien, et comprend une console pour effectuer des calculs, définir des variables et exécuter des programmes.
+2. La console Python permet de faire des calculs simples, d'affecter des valeurs aux variables, d'effectuer des opérations mathématiques telles que les puissances, les divisions euclidiennes et d'utiliser des modules comme math pour des opérations plus avancées.
+3. Les chaînes de caractères sont gérées en Python en les définissant entre guillemets. On peut les manipuler et les concaténer pour former de nouveaux mots.
+4. L'éditeur de programme est l'endroit où l'on peut saisir et enregistrer un programme pour une utilisation ultérieure. On peut exécuter les programmes depuis la console et vérifier leur syntaxe avant de les lancer.
+5. L'objectif de ce tutoriel était de présenter l'environnement Python et d'initier à la programmation. Des programmes plus complexes pourront être réalisés une fois les bases maîtrisées.

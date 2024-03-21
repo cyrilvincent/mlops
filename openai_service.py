@@ -72,13 +72,13 @@ if __name__ == '__main__':
     # with open("data/chatgpt/python.txt", "w") as f:
     #     f.write(res)
     #
-    openai = OpenAIChatGPTService()
-    with open("data/chatgpt/python.txt") as f:
-        text = f.read()
-    summary = openai.predict(text)
-    print(summary)
-    with open("data/chatgpt/summary.txt", "w") as f:
-        f.write(summary)
+    # openai = OpenAIChatGPTService()
+    # with open("data/chatgpt/python.txt") as f:
+    #     text = f.read()
+    # summary = openai.predict(text)
+    # print(summary)
+    # with open("data/chatgpt/summary.txt", "w") as f:
+    #     f.write(summary)
     #
     # openai = OpenAIChatGPTService()
     # with open("data/chatgpt/python.txt") as f:
@@ -88,9 +88,9 @@ if __name__ == '__main__':
     # with open("data/chatgpt/python_correction.txt", "w") as f:
     #     f.write(correction)
 
-    # openai = OpenAIDallEService()
-    # url = openai.predict("Un Python sur un ordinateur des années 80")
-    # print(url)
+    openai = OpenAIDallEService()
+    url = openai.predict("Un Python sur un ordinateur des années 80")
+    print(url)
 
     # openai = OpenAIMp3()
     # with open("data/chatgpt/python.txt") as f:
