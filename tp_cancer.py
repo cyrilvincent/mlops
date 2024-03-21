@@ -1,3 +1,5 @@
+import random
+
 import pandas
 import pandas as pd
 import sklearn.ensemble as tree
@@ -7,6 +9,8 @@ import pickle
 import matplotlib.pyplot as plt
 import sklearn.model_selection as ms
 import sklearn.metrics as metrics
+
+random.seed(0)
 
 dataframe = pd.read_csv("data/cancer/data.csv", index_col="id")
 y = dataframe.diagnosis
@@ -24,7 +28,7 @@ print(score)
 score = model.score(xtest, ytest) # Official
 print(score)
 
-path = f"data/cancer/svm-{int(score*100)}.pickle" # Save
+path = f"data/cancer/rf-{int(score*100)}.pickle" # Save
 with open(path, "wb") as f:
     pickle.dump(model, f)
 
