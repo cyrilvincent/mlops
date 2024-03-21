@@ -6,12 +6,12 @@ services:
       context: .
       dockerfile: ./Dockerfile.nginx
     depends_on:
-      - wsgi-prod
+      - wsgi
     restart: always
     ports:
       - 80:80
 
-  wsgi-prod:
+  wsgi:
     build:
       context: .
       dockerfile: ./Dockerfile.wsgi
