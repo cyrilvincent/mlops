@@ -18,3 +18,6 @@ with open("data/mnist/mnist_0.json") as f:
     x = json.load(f)
 r = requests.post(url, json=x)
 print(r.content.decode())
+
+# docker compose up --build
+# Si bug de build docker build .
