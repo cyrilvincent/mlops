@@ -1,7 +1,0 @@
-# syntax=docker/dockerfile:1
-
-FROM prom/prometheus as base
-
-WORKDIR /app
-
-EXPOSE 9090
