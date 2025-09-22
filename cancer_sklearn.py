@@ -35,10 +35,6 @@ print(score) # Accuracy = nb good prediction / nb prediction totale
 with open(f"data/cancer/cancer-rf-{score:.2f}.pickle", "wb") as f:
     pickle.dump(model, f)
 
-
-
-
-
 from sklearn.tree import export_graphviz
 export_graphviz(model.estimators_[0], out_file="data/cancer/tree.dot", feature_names=x.columns, class_names=["0", "1"])
 plt.bar(x.columns, model.feature_importances_)
