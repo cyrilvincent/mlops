@@ -22,6 +22,9 @@ ypredicted = model.predict(xtest)
 score = model.score(xtest, ytest)
 print(f"Score: {score:.3f}")
 
+with open(f"data/mnist/mnist-rf-{score:.2f}.pickle", "wb") as f:
+    model = pickle.dump(f)
+
 matrix = model.feature_importances_.reshape(28, 28)
 plt.matshow(matrix)
 plt.show()
