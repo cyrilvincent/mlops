@@ -5,6 +5,7 @@ import sklearn.linear_model as lm
 import numpy as np
 import sklearn.ensemble as rf
 import sklearn.model_selection as ms
+import pickle
 
 print(sklearn.__version__)
 #0 Load data
@@ -26,12 +27,16 @@ model = rf.RandomForestClassifier()
 # 5 Fit = Apprentisage
 model.fit(xtrain, ytrain)
 
-
-
-
-# 7 Score - Metrics
+# 6 Score - Metrics
 score = model.score(xtest, ytest)
 print(score) # Accuracy = nb good prediction / nb prediction totale
+
+# 7 Save
+with open(f"data/cancer/cancer-rf-{score:.2f}.pickle", "wb") as f:
+    pickle.dump(model, f)
+
+
+
 
 
 from sklearn.tree import export_graphviz
