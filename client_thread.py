@@ -16,8 +16,9 @@ class ClientThread(threading.Thread):
         r = requests.post(self.url, json=x)
         print(f"Thread {self.num} => {r.content.decode()}", end='')
 
+
 if __name__ == '__main__':
-    nb_thread = 100
+    nb_thread = 1000
     url = 'http://127.0.0.1:80/mnist'
     thread = ClientThread(0, url) # To wakeup nginx
     thread.start()
