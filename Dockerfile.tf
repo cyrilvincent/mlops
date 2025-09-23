@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM tensorflow/tensorflow:2.10.1 as base
+FROM tensorflow/tensorflow:2.10.1 AS base
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1

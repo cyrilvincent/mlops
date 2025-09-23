@@ -13,20 +13,25 @@ services:
         dockerfile: ./Dockerfile.tf
       ports:
         - 5001:5001
+      deploy:
+        resources:
+          limits:
+            cpus: '1'
+            memory: 2000M
 
-#  nginx:
-#      build:
-#        context: .
-#        dockerfile: ./Dockerfile.nginx
-#      depends_on:
-#        - wsgi
-#      ports:
-#        - 80:80
-#
-#  wsgi:
-#    build:
-#      context: .
-#      dockerfile: ./Dockerfile.wsgi
-#    ports:
-#      - 9090:9090
+  nginx:
+      build:
+        context: .
+        dockerfile: ./Dockerfile.nginx
+      depends_on:
+        - wsgi
+      ports:
+        - 80:80
+
+  wsgi:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.wsgi
+    ports:
+      - 9090:9090
 
