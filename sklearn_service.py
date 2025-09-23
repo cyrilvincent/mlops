@@ -10,25 +10,25 @@ class HouseSklearnService:
 
     def __init__(self, path):
        self.path = path
-       self.dataframe = pd.read_csv("data/house/house.csv")
+       self.dataframe = pd.read_csv(path)
        self.y = self.dataframe["loyer"]
        self.x = self.dataframe["surface"].values.reshape(-1, 1)
        self.model = lm.LinearRegression()
 
-
     def train(self):
-        model.fit(x, y)
+        self.model.fit(self.x, self.y)
 
-    def predict(self, vector: List[float]):
-        matrix = np.array([vector])
+    def predict(self, surface: float):
+        matrix = np.array([surface]).reshape(-1, 1)
         res = self.model.predict(matrix)
         return int(res[0])
 
-    def predicts(self, matrix: List[List[float]]):
-        matrix = np.array(matrix)
+    def predicts(self, surfaces: List[float]):
+        matrix = np.array(surfaces).reshape(-1, 1)
         res = self.model.predict(matrix)
         res = [float(x) for x in res]
         return res
+
 
 class CancerSklearnService:
 
@@ -64,6 +64,9 @@ class MnistSklearnService:
         res = [int(x) for x in res]
         return res
 
-
+if __name__ == '__main__':
+    house = HouseSklearnService("data/house/house.csv")
+    house.train()
+    print(house.predict(100))
 
 
