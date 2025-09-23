@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-ARG PYTHON_VERSION=3.10
+ARG PYTHON_VERSION=3.11
 FROM python:${PYTHON_VERSION}-slim as base
 
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -16,6 +16,6 @@ COPY hello.py .
 
 CMD python hello.py
 
-# docker build -t hello .
-# docker run hello
-# Ajouter -f Dockerfile.hello si le fichier ne s'appel pas Dockerfile
+# docker build -t hello . # Tout sauf CMD
+# docker run hello # CMD
+# Ajouter -f Dockerfile.hello si le fichier ne s'appel pas Dockerfile uniquement pour le build
