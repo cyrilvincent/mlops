@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 import sklearn_service
 app = Flask(__name__)
+house_service = sklearn_service.HouseSklearnService("data/house/house.csv")
 mnist_service = sklearn_service.MnistSklearnService("data/mnist/rf-93.pickle")
 cancer_service = sklearn_service.CancerSklearnService("data/cancer/rf-94.pickle")
 
@@ -12,10 +13,9 @@ def root():
 
 @app.route("/house/<int:surface>")
 def house(surface):
-    with open("data/house/house.pickle", "rb") as f:
-        model = pickle.load(f)
-    y_res = model.predict(np.array([[surface]]))
-    return jsonify(float(y_res[0]))
+    house_service.train()
+    y_res = house_service.predict(surface)
+    return jsonify(y_res)
 
 @app.route("/cancer", methods=['POST'])
 def cancer():
