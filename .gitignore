@@ -10,3 +10,4 @@ cnn*.h5
 .idea
 *.env
 *.pickle
+.vs/**
