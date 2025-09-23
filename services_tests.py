@@ -39,7 +39,6 @@ class ServiceTest(unittest.TestCase):
         res = s.predicts(matrix)
         self.assertEqual([1, 0], res)
 
-
     def test_mnist_predict(self):
         s = MnistSklearnService("data/mnist/rf-93.pickle")
         with open("data/mnist/mnist_0.json") as f:
