@@ -5,7 +5,7 @@ cows/*
 logs/**
 .ipynb**/**
 vgg16model*.h5
-temp
+temp/**
 cnn*.h5
 .idea
 *.env
