@@ -11,3 +11,8 @@ cnn*.h5
 *.env
 *.pickle
 .vs/**
+venv
+venv*
+.venv
+__pycache__
+.idea
