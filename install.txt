@@ -1,0 +1,4 @@
+Python 3.9-3.12 pour TF
+venv = Python 3.10
+.venv12 = Python 3.12
+
