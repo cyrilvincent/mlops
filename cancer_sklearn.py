@@ -23,7 +23,7 @@ xtrain, xtest, ytrain, ytest = ms.train_test_split(x, y, test_size=0.2, train_si
 # Score (mauvais)
 
 scaler = pp.StandardScaler()  # f(x) = (x - mean) - std
-scaler.fit(xtrain)  # Caclul pour chaque colonne mean + std
+scaler.fit(xtrain)  # Calcul pour chaque colonne mean + std
 xtrain = scaler.transform(xtrain)
 xtest = scaler.transform(xtest)
 
@@ -41,7 +41,7 @@ from sklearn.tree import export_graphviz
 export_graphviz(model.estimators_[0], out_file="data/cancer/tree.dot", feature_names=x.columns, class_names=["0", "1"])
 
 with open(f"data/cancer/cancer_rf_{score:.2f}.pkl", "wb") as f:
-    pickle.dump(model, f)
+    pickle.dump((scaler, model), f)
 
 plt.bar(x.columns, model.feature_importances_)
 plt.xticks(rotation=45)
