@@ -59,4 +59,4 @@ ypred = model.predict(xtest)
 pred = np.argmax(ypred, axis=1)
 print(pred)
 
-model.save("data/mnis/mnist_cnn.h5")
+model.save("data/mnist/mnist_cnn.h5")
