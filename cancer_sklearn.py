@@ -5,6 +5,7 @@ import numpy as np
 import sklearn.ensemble as rf
 import sklearn.model_selection as ms
 import sklearn.preprocessing as pp
+import pickle
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
@@ -31,12 +32,16 @@ model = rf.RandomForestClassifier()
 model.fit(xtrain, ytrain)
 # print(model.coef_)
 # print(model.intercept_)
-print(model.score(xtest, ytest))
+score = model.score(xtest, ytest)
+print(score)
 
 print(model.feature_importances_)
 
 from sklearn.tree import export_graphviz
 export_graphviz(model.estimators_[0], out_file="data/cancer/tree.dot", feature_names=x.columns, class_names=["0", "1"])
+
+with open(f"data/cancer/cancer_rf_{score:.2f}.pkl", "wb") as f:
+    pickle.dump(model, f)
 
 plt.bar(x.columns, model.feature_importances_)
 plt.xticks(rotation=45)
