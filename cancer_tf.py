@@ -29,3 +29,7 @@ score = model.evaluate(xtest, ytest)
 print(score)
 
 model.save("data/cancer/cancer_tf.h5")
+
+# Refaire tourner ce code
+# cancer_tf.h5 viewer sur netron.app
+# Refaire paeil sur MNIST
