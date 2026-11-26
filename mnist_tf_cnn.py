@@ -8,6 +8,7 @@ import numpy as np
 import sklearn.neighbors as n
 import sklearn.ensemble as rf
 import sklearn.tree as tree
+import sklearn.metrics as m
 import pickle
 import tensorflow
 import keras
@@ -51,7 +52,7 @@ model.summary()
 
 model.compile(optimizer="rmsprop", metrics=["accuracy"], loss="categorical_crossentropy")
 
-model.fit(xtrain, ytrain, epochs=5, validation_data=(xtest, ytest), batch_size=10)
+model.fit(xtrain, ytrain, epochs=1, validation_data=(xtest, ytest), batch_size=10)
 
 print(model.evaluate(xtest, ytest))
 
@@ -60,3 +61,9 @@ pred = np.argmax(ypred, axis=1)
 print(pred)
 
 model.save("data/mnist/mnist_cnn.h5")
+
+ytest = np.argmax(ytest, axis=1)
+print(m.classification_report(pred, ytest))
+print(m.confusion_matrix(pred, ytest))
+plt.show()
+
