@@ -33,10 +33,11 @@ class CancerSklearnService:
 
     def __init__(self, path):
         with open(path, "rb") as f:
-            self.model = pickle.load(f)
+            self.scaler, self.model = pickle.load(f)
 
     def predict(self, vector: List[float]):
         matrix = np.array([vector])
+        self.scaler.transform(matrix)
         res = self.model.predict(matrix)
         return int(res[0])
 
