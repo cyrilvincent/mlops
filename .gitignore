@@ -17,6 +17,6 @@ venv*
 .venv*
 api.log
 __pycache__
-data/mnist/mnist_rf_0.97.pkl
+data/mnist/mnist_rf_0.97.*
 
 
