@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import sklearn.ensemble as rf
-from sklearn.tree import export_graphviz
 import pickle
 
 with np.load("data/mnist/mnist.npz", allow_pickle=True) as f:
@@ -17,7 +16,7 @@ xtest = xtest.reshape(-1, 28*28)
 # Apprendre
 # Scorer
 # Prediction sur le jeux de test
-model = rf.RandomForestRegressor()
+model = rf.RandomForestClassifier()
 print("Fitting")
 model.fit(xtrain, ytrain)
 print("Score")

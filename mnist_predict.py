@@ -12,9 +12,9 @@ with np.load("data/mnist/mnist.npz", allow_pickle=True) as f:
     xtrain, ytrain = f["x_train"], f["y_train"]  # 60000
     xtest, ytest = f["x_test"], f["y_test"]  # 10000
 
-with open(f"data/mnist/mnist-rf-0.97.pickle", "rb") as f:
+with open(f"data/mnist/mnist_rf_0.97.pkl", "rb") as f:
     model = pickle.load(f)
-    x = np.array(xtest[num_image].reshape(-1,28*28))
+    x = np.array(xtest[num_image].reshape(-1, 28*28))
     ypredicted = model.predict(x)
     print(f"Predicted: {ypredicted}, test: {ytest[num_image]}")
 
