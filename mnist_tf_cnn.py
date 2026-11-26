@@ -52,7 +52,7 @@ model.summary()
 
 model.compile(optimizer="rmsprop", metrics=["accuracy"], loss="categorical_crossentropy")
 
-model.fit(xtrain, ytrain, epochs=1, validation_data=(xtest, ytest), batch_size=10)
+model.fit(xtrain, ytrain, epochs=5, validation_data=(xtest, ytest), batch_size=10)
 
 print(model.evaluate(xtest, ytest))
 

@@ -63,7 +63,7 @@ class MNISTTFService(AbstractService):
 
     def predict_top10(self, matrix: list[list[int]]) -> list[float]:
         cube = np.array([matrix], dtype=np.float64)
-        cube *= 1/255
+        cube /= 255
         res = self.model.predict(cube)[0]
         return [float(x) for x in res]
 
