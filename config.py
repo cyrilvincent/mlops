@@ -1,3 +1,4 @@
+version = "0.0.1"
 house_path = "data/house/house.csv"
 cancer_rf_path = "data/cancer/cancer_rf_0.96.pkl"
 mnist_rf_path = "data/mnist/rf-93.pickle"
