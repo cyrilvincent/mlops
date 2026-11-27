@@ -30,9 +30,9 @@ services:
     ports:
       - 9090:9090
 
-  wsgi_tf:
-    build:
-      context: .
-      dockerfile: ./Dockerfile.wsgi_tf
-    ports:
-      - 9091:9091
+#  wsgi_tf:
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile.wsgi_tf
+#    ports:
+#      - 9091:9091

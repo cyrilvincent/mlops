@@ -7,12 +7,18 @@ services:
         dockerfile: ./Dockerfile.nginx
       depends_on:
         - wsgi
+        - wsgi_tf
       ports:
         - 80:80
 
   wsgi:
     environment:
       env: prod
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 8000M
     build:
       context: .
       dockerfile: ./Dockerfile.wsgi
