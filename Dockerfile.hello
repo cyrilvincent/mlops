@@ -1,0 +1,20 @@
+# syntax=docker/dockerfile:1
+
+ARG PYTHON_VERSION=3.12
+FROM python:${PYTHON_VERSION}-slim AS base
+
+WORKDIR /app
+
+COPY requirements.txt .
+COPY requirements-tf.txt .
+
+RUN python -m pip install -r requirements.txt
+RUN python -m pip install -r requirements-tf.txt
+
+COPY hello.py .
+
+CMD python hello.py
+
+# docker build -t hello . # Tout sauf CMD
+# docker run hello # CMD
+# Ajouter -f Dockerfile.hello si le fichier ne s'appel pas Dockerfile uniquement pour le build
