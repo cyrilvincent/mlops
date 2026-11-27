@@ -5,3 +5,4 @@ uvicorn
 tensorflow
 python-multipart
 Pillow
+httpx2
