@@ -4,10 +4,30 @@ import tensorflow as tf
 import uvicorn
 import config
 from fastapi import FastAPI, Body, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
+import os
 
 import tensorflow_service
 
-app = FastAPI()
+is_prod = "env" in os.environ and os.environ["env"] == "prod"
+
+app = FastAPI(
+    docs_url=None if is_prod else "/docs",
+    redoc_url=None,
+    openapi_url=None if is_prod else "/openapi.json",
+)
+
+cors = ["http://www.cyrilvincent.com", "https://www.cyrilvincent.com"]
+if not is_prod:
+    cors += ["http://localhost", "http://127.0.0.1"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=cors,
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Authorization", "Content-Type"],
+)
 
 image_service = tensorflow_service.ImageNet()
 cancer_service = tensorflow_service.CancerTFService(config.cancer_tf_path, config.cancer_scaler_path)
