@@ -1,0 +1,29 @@
+version: '3.1'
+services:
+
+  nginx:
+      build:
+        context: .
+        dockerfile: ./Dockerfile.nginx
+      depends_on:
+        - wsgi
+      ports:
+        - 80:80
+
+  wsgi:
+    environment:
+      env: prod
+    build:
+      context: .
+      dockerfile: ./Dockerfile.wsgi
+    ports:
+      - 9090:9090
+
+  wsgi_tf:
+    environment:
+      env: prod
+    build:
+      context: .
+      dockerfile: ./Dockerfile.wsgi_tf
+    ports:
+      - 9091:9091
