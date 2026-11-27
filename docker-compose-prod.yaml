@@ -27,3 +27,10 @@ services:
       dockerfile: ./Dockerfile.wsgi_tf
     ports:
       - 9091:9091
+
+  prom:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.prom
+    ports:
+      - 9092:9090
