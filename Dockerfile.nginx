@@ -3,3 +3,4 @@ FROM nginx:1.25 AS base
 COPY nginx/nginx.conf /etc/nginx
 EXPOSE 80
 
+
