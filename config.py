@@ -1,1 +1,6 @@
 house_path = "data/house/house.csv"
+cancer_rf_path = "data/cancer/cancer_rf_0.96.pkl"
+mnist_rf_path = "data/mnist/rf-93.pickle"
+cancer_tf_path = "data/cancer/cancer_tf.h5"
+cancer_scaler_path = "data/cancer/mlp_scaler.pickle"
+mnist_tf_path = "data/mnist/mnist_cnn.h5"

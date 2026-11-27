@@ -1,5 +1,6 @@
 import json
 import unittest
+import config
 from sklearn_service import HouseSklearnService, CancerSklearnService, MnistSklearnService
 from tensorflow_service import ImageNet, CancerTFService, MNISTTFService
 
@@ -15,13 +16,13 @@ class ServiceTest(unittest.TestCase):
         self.assertEqual(2, i)
 
     def test_house_sklearn_service(self):
-        house_service = HouseSklearnService("data/house/house.csv")
+        house_service = HouseSklearnService(config.house_path)
         house_service.train()
         loyer = house_service.predict(100)
         self.assertEqual(3813, loyer)
 
     def test_cancer_predict(self):
-        s = CancerSklearnService("data/cancer/cancer_rf_0.96.pkl")
+        s = CancerSklearnService(config.cancer_rf_path)
         vector = [17.99, 10.38, 122.8, 1001, 0.1184, 0.2776, 0.3001, 0.1471, 0.2419, 0.07871, 1.095, 0.9053, 8.589,
                   153.4, 0.006399, 0.04904, 0.05373, 0.01587, 0.03003, 0.006193, 25.38, 17.33, 184.6, 2019, 0.1622,
                   0.6656, 0.7119, 0.2654, 0.4601, 0.1189]
@@ -29,7 +30,7 @@ class ServiceTest(unittest.TestCase):
         self.assertEqual(1, res)
 
     def test_cancer_predicts(self):
-        s = CancerSklearnService("data/cancer/cancer_rf_0.96.pkl")
+        s = CancerSklearnService(config.cancer_rf_path)
         matrix = [
             [17.99, 10.38, 122.8, 1001, 0.1184, 0.2776, 0.3001, 0.1471, 0.2419, 0.07871, 1.095, 0.9053, 8.589, 153.4,
              0.006399, 0.04904, 0.05373, 0.01587, 0.03003, 0.006193, 25.38, 17.33, 184.6, 2019, 0.1622, 0.6656, 0.7119,
@@ -40,14 +41,14 @@ class ServiceTest(unittest.TestCase):
         self.assertEqual([1, 1], res)
 
     def test_mnist_predict(self):
-        s = MnistSklearnService("data/mnist/rf-93.pickle")
+        s = MnistSklearnService(config.mnist_rf_path)
         with open("data/mnist/mnist_0.json") as f:
             matrix = json.load(f)
         res = s.predict(matrix)
         self.assertEqual(0, res)
 
     def test_mnist_predicts(self):
-        s = MnistSklearnService("data/mnist/rf-93.pickle")
+        s = MnistSklearnService(config.mnist_rf_path)
         with open("data/mnist/mnist_0.json") as f:
             matrix0 = json.load(f)
         with open("data/mnist/mnist_1.json") as f:
@@ -62,7 +63,7 @@ class ServiceTest(unittest.TestCase):
         self.assertAlmostEqual(0.7, score, delta=0.1)
 
     def test_cancer_tf(self):
-        s = CancerTFService("data/cancer/cancer_tf.h5", "data/cancer/mlp_scaler.pickle")
+        s = CancerTFService(config.cancer_tf_path, config.cancer_scaler_path)
         vector = [17.99, 10.38, 122.8, 1001, 0.1184, 0.2776, 0.3001, 0.1471, 0.2419, 0.07871, 1.095, 0.9053, 8.589,
                   153.4, 0.006399, 0.04904, 0.05373, 0.01587, 0.03003, 0.006193, 25.38, 17.33, 184.6, 2019, 0.1622,
                   0.6656, 0.7119, 0.2654, 0.4601, 0.1189]
@@ -70,7 +71,7 @@ class ServiceTest(unittest.TestCase):
         self.assertEqual(1, res)
 
     def test_mnist_tf(self):
-        s = MNISTTFService("data/mnist/mnist_cnn.h5")
+        s = MNISTTFService(config.mnist_tf_path)
         with open("data/mnist/mnist_0.json") as f:
             matrix = json.load(f)
         res = s.predict(matrix)
