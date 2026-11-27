@@ -1,7 +1,6 @@
 from typing import Any
 import uvicorn
 from fastapi import FastAPI, Body
-
 import config
 import sklearn_service
 import os
@@ -15,9 +14,9 @@ app = FastAPI(
     openapi_url=None if is_prod else "/openapi.json",
 )
 
-cors = ["https://my_url.com", "https://www.my_url.com"]
+cors = ["http://www.cyrilvincent.com", "https://www.cyrilvincent.com"]
 if not is_prod:
-    cors += ["http://localhost", "http://127.0.0.1", "https://localhost"]
+    cors += ["http://localhost", "http://127.0.0.1"]
 
 app.add_middleware(
     CORSMiddleware,

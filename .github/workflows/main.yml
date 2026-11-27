@@ -24,5 +24,22 @@ jobs:
       - run: pip install -r requirements-tf.txt
       - run: python -m unittest services_tests -v
 
+  integration-tests:
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{env.PYTHON_VERSION}}
+          cache: pip
+          cache-dependency-path: |
+            ./requirements.txt
+            ./requirements-tf.txt
+      - run: pip install -r requirements.txt
+      - run: pip install -r requirements-tf.txt
+      - run: python -m unittest api_tests -v
+      - run: python -m unittest api_tf_tests -v
+
 
 

@@ -24,5 +24,5 @@ class ApiTFTests(unittest.TestCase):
             x = json.load(f)
         r = self.client.post("/mnist", json=x)
         self.assertEqual(r.status_code, 200)
-        self.assertEqual(r.json()[0], 0)
+        self.assertEqual(r.json(), 0)
 
