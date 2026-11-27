@@ -1,0 +1,29 @@
+# syntax=docker/dockerfile:1
+
+ARG PYTHON_VERSION=3.10
+FROM python:${PYTHON_VERSION}-slim AS base
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+RUN --mount=type=cache,target=/root/.cache/pip \
+    --mount=type=bind,source=requirements-tf.txt,target=requirements-tf.txt \
+    python -m pip install -r requirements-tf.txt
+
+RUN python -m pip install uvicorn[standard]
+
+COPY data/cancer/*.p*kl* data/cancer/
+COPY data/house/*.* data/house/
+COPY data/mnist/*.p*kl* data/mnist/
+COPY api.py .
+COPY config.py .
+COPY tensorflow_service.py .
+
+EXPOSE 9091
+
+# CMD uwsgi --ini uwsgi.ini  # Flask only
+
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "9091", "--workers", "4"]
+
