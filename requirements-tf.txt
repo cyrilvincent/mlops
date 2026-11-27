@@ -6,3 +6,4 @@ tensorflow
 python-multipart
 Pillow
 httpx2
+scikit-learn
